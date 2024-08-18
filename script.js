@@ -53,3 +53,8 @@ function saveData() {
   localStorage.setItem('data', listTask.innerHTML);
   localStorage.setItem('date', currentDate);
 }
+
+const checkbox = document.getElementById('checkbox');
+checkbox.addEventListener('change', () => {
+  document.body.classList.toggle('dark');
+});

@@ -6,11 +6,42 @@
 }
 
 body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fff;
+  color: #000;
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
-  background: linear-gradient(360deg, #2c262e, #0f2124);
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  transition: background 0.2s linear, color 0.2s linear;
+}
+
+body.dark {
+  background-color: #292c35;
+  color: #fff;
+}
+
+.darkBg {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.container h1,
+.container p,
+.container li,
+input::placeholder {
+  color: #111;
+  transition: color 0.2s linear;
+}
+
+body.dark .container h1,
+body.dark .container p,
+body.dark .container li,
+body.dark input::placeholder {
+  color: white;
 }
 
 .container {
@@ -18,10 +49,11 @@ body {
   width: 90%;
   max-width: 500px;
   height: auto;
+  margin: 100px auto;
 }
 
 h1 {
-  color: lavenderblush;
+  color: #111;
   font-size: 22px;
   text-align: center;
 }
@@ -40,11 +72,19 @@ input {
   border: none;
   outline: none;
   border-radius: 20px;
+  background-color: #6b738a;
+  color: #111;
+}
+
+body.dark input {
+  background-color: #444;
+  color: white;
 }
 
 input::placeholder {
   font-size: 14px;
   font-weight: 400;
+  color: #111;
 }
 
 button {
@@ -60,22 +100,24 @@ button {
 
 .listTask {
   margin-top: 20px;
-  padding-left: 0;
+  padding-left: 50px;
 }
 
 .listTask li {
   line-height: 30px;
   list-style: circle;
-  color: antiquewhite;
+  color: #111;
   position: relative;
   padding-left: 30px;
   margin-bottom: 10px;
 }
-
+body.dark .listTask li {
+  color: white;
+}
 span {
   font-size: 18px;
   position: absolute;
-  right: 0;
+  right: 100px;
   top: 0;
   cursor: pointer;
 }
@@ -87,6 +129,60 @@ span:hover {
 #displayDate {
   text-align: center;
   margin-top: 30px;
+}
+
+footer {
+  font-size: 17px;
+  text-align: center;
+}
+
+footer div {
+  margin-top: 10px;
+}
+footer i {
+  margin-left: 10px;
+}
+
+/* darkmode button */
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox-label {
+  background-color: #111;
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  position: relative;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.fa-moon {
+  color: #f1c40f;
+  z-index: 1;
+}
+
+.fa-sun {
+  color: #f39c12;
+  z-index: 1;
+}
+
+.checkbox-label .ball {
+  background-color: #fff;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+.checkbox:checked + .checkbox-label .ball {
+  transform: translateX(24px);
 }
 
 /* Media Queries for responsiveness */
